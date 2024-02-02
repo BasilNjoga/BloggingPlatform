@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from rest_framework.generics import ListAPIView
+from myblog.models import UserBlog
 
+from myblog.serializers import UserBlogSerializer
 
-def home(request):
-    return render()
+class UserBlogListView(ListAPIView):
+    serializer_class = UserBlogSerializer
+    queryset = UserBlog.objects.all()
