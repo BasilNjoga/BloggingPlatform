@@ -1,5 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router';
+//import posts from '../views'
 import store from '../store'
 
 const route = useRoute()
