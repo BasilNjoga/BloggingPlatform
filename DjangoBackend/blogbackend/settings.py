@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-
+import dj_database_url
 from decouple import config
 from pathlib import Path
 
@@ -28,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -96,6 +96,9 @@ DATABASES = {
 
     }
 }
+
+DATABASES["default"] = dj_database_url.parse("postgres://blog_app_database_7biu_user:G5F8mtTROKBH50fLre8GiQxRM5Sfq0cc@dpg-cn00d1qcn0vc73arf4u0-a.oregon-postgres.render.com/blog_app_database_7biu")
+
 
 
 # Password validation
