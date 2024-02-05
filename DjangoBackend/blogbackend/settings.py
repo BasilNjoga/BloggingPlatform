@@ -97,7 +97,7 @@ DATABASES = {
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgres://blog_app_database_7biu_user:G5F8mtTROKBH50fLre8GiQxRM5Sfq0cc@dpg-cn00d1qcn0vc73arf4u0-a.oregon-postgres.render.com/blog_app_database_7biu")
+DATABASES["default"] = dj_database_url.parse("postgres://blog_app_database_7biu_user:G5F8mtTROKBH50fLre8GiQxRM5Sfq0cc@dpg-cn00d1qcn0vc73arf4u0-a/blog_app_database_7biu")
 
 
 
