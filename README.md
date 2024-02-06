@@ -8,7 +8,7 @@ a blogging platform to create and view blogs
 - Tailwind css
 - Axios for API calls
 
-### Backend
+### Backend - [DjangoBackend](https://github.com/BasilNjoga/BloggingPlatform/tree/main/DjangoBackend)
 - Django
 - Django-Rest-Framework
 - Python
