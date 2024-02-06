@@ -3,7 +3,7 @@ a blogging platform to create and view blogs
 
 ## Technology
 
-### Frontend
+### Frontend - [BlogApp](https://github.com/BasilNjoga/BloggingPlatform/tree/main/BlogApp)
 - Vue js
 - Tailwind css
 - Axios for API calls
