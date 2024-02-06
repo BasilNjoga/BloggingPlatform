@@ -9,3 +9,4 @@
 
 - get - https://blog-app-django-backend.onrender.com/blogapp/blogs
 - post - https://blog-app-django-backend.onrender.com/blogapp/create
+- patch - https://blog-app-django-backend.onrender.com/blogapp/update
