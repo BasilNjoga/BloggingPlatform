@@ -17,5 +17,5 @@ a blogging platform to create and view blogs
 - Postgres
 
 ### Hosting
-- Frontend- vercel - https://blogging-platform-f4wokiujl-basilnjoga.vercel.app/
+- Frontend- vercel - https://blogging-platform-gamma.vercel.app/
 - Backend - Render - https://blog-app-django-backend.onrender.com/blogapp/blogs
