@@ -6,7 +6,7 @@ const store = reactive ({
         {
             id:1,
             title: "How to make your first blog",
-            description: "This is easy, create and account , create new , save",
+            description: "This is easy, create a new account , click on create new blog, Add you blog details and save",
             date: new Date(),
         }, {
             id:2,

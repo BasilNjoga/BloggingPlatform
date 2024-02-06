@@ -1,41 +1,94 @@
 <script >
-import Header from '../components/Header.vue'
-import store from '../store.js'
 import axios from 'axios'
-import { ref } from 'vue'
 
 
+// Function to call the Available Django API
 export default {
 
-    setup () {
+        data() {
+            return {
+                posts: [],
+                showNextButton: false,
+                showPreviousButton: false,
+                currentPage: 1
+        
+            }
+        },
+        mounted() {
+            this.getPosts();
+        },
+        methods: { 
+            getPosts() {
+                this.showNextButton = false
+                this.showPreviousButton = false
+                axios.get(`https://blog-app-django-backend.onrender.com/blogapp/blogs?page=${this.currentPage}`)
+                    .then(response => {
+                        
+                        this.formatPosts(response.data.results)
+                        console.log(response.data.results)
+                        if (response.data.next) {
+                            this.showNextButton = true
+                        }
 
-        const posts = ref('')
+                        if (response.data.previous) {
+                            this.showPreviousButton = true
+                        }
+                })
+            },
+            formatPosts(posts) {
+                for (let key in posts) {
+                    this.posts.push({ ...posts[key], id: key })
+                }
+            },
+            goToNextPage() {
+                this.currentPage += 1
+                this.getPosts()
+                
+            },
+            goToPreviousPage() {
+                this.currentPage -= 1
+                this.getPosts()
+            }
 
-        axios.get('http://127.0.0.1:8000/blogapp/blogs')
-            .then(response => {
-                posts.value = response.data
-            })
 
-        return {
-            posts
-        }
-    }
-    
+
+        },
 }
+
+
 //const getWordsNumber = (str) => (str.split(' ').length)
 
 </script>
+<style>
+.row {
+    display: flex;
+}
+.column {
+    flex: 50%;
+}
+
+</style>
 
 <template>
     <div class="Home">
-        <main class="container mx-auto " >
-    
-            <div class="PostItem border border-slate-700 mb-2 p-4 rounded-lg cursor-pointer"
+
+        <main class=" mx-auto " >
+            <button @click="$router.push('/create')" class="p-4 font-bold bg-blue-100 rounded-lg createbutton ml-20 mb-5"> Create New Blog </button>
+            <div class="grid grid-cols-2">
+            <div class="ml-4 PostItem border border-slate-700 mb-4 p-4 rounded-lg cursor-pointer"
             v-for="item, itemIndex in posts" :key="itemIndex"
             @click="$router.push(`/post/${item.id}`)">
                 <h1 class="text-slate-900 text-3xl font-bold my-2"> {{  item.title  }}</h1>
                 <p class="text-xl my-2"> {{ item.body }}</p>
             </div>
+            </div>
+
+            <div class="button">
+                <button @click="goToPreviousPage()" class="p-2 font-bold bg-blue-100 rounded-lg createbutton ml-20 mb-5" v-if="showPreviousButton">Previous</button>
+                <button @click="goToNextPage()" class="p-2 font-bold bg-blue-100 rounded-lg createbutton ml-20 mb-5" v-if="showNextButton">Next</button>
+                
+            </div>
+
         </main>
     </div>
 
